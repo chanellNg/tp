@@ -35,6 +35,23 @@ public class ParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
+
+    /**
+     * Parses a {@code String name} into a {@code Name}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static boolean parseTutor(String isTutorValue) throws ParseException {
+        requireNonNull(isTutorValue);
+        String trimmedIsTutor = isTutorValue.trim();
+        boolean isTutor = false;
+        if(trimmedIsTutor.equals("tutor")) {
+            isTutor = true;
+        }
+        return isTutor;
+    }
+
     /**
      * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
