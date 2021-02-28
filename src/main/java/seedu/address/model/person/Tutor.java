@@ -11,7 +11,7 @@ public class Tutor extends Person{
     public Tutor(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         super(name, phone, email, address, tags);
         requireAllNonNull(name, phone, email, address, tags);
-
+        tags.add(new Tag("tutor"));
     }
 
     @Override
