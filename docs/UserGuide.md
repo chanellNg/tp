@@ -73,25 +73,59 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a tutor: `add`
 
-Adds a person to the address book.
+Adds a tutor to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add_person pt/tutor n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add_person pt/tutor n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
+* `add_person pt/tutor n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+
+### Adding a student: `add`
+
+Adds a student to the address book.
+
+Format: `add_person pt/student n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+A person can have any number of tags (including 0)
+</div>
+
+Examples:
+* `add_person pt/student n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
+* `add_person pt/student n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+
+### Adding a session: `add`
+
+Adds a session to the address book.
+
+Format: `add_session d/DAY t/TIMESLOT s/SUBJECT [t/TAG] …
+`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+A session can have any number of tags (including 0)
+</div>
+
+Examples:
+* `add_session d/Saturday t/1300 to 1500 s/A Math`
 
 ### Listing all persons : `list`
 
 Shows a list of all persons in the address book.
 
-Format: `list`
+Format: `list persons`
+
+### Listing all sessions : `list`
+
+Shows a list of all sessions in the address book.
+
+Format: `list sessions`
 
 ### Viewing a tutor : `view`
 
@@ -130,7 +164,6 @@ Example:
 * `view c/1` views the details of the class with class ID 1.
 
 
-
 ### Editing a person : `edit`
 
 Edits an existing person in the address book.
@@ -166,19 +199,41 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Deleting a person : `delete`
+### Deleting a student : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified student from the address book.
 
-Format: `delete INDEX`
+Format: `delete_person s/ID`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the student with the specified `s/ID`.
+* The s/ID refers to the student ID shown in the displayed person list.
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list persons` followed by `delete s/2` deletes the student with student ID s/2 in the address book.
+
+### Deleting a tutor : `delete`
+
+Deletes the specified tutor from the address book.
+
+Format: `delete_person t/ID`
+
+* Deletes the tutor with the specified `t/ID`.
+* The t/ID refers to the tutor ID shown in the displayed person list.
+
+Examples:
+* `list persons` followed by `delete t/1` deletes the tutor with tutor ID t/1 in the address book.
+
+### Deleting a session : `delete`
+
+Deletes the specified session from the address book.
+
+Format: `delete_session c/ID`
+
+* Deletes the session with the specified `c/ID`.
+* The c/ID refers to the session ID shown in the displayed session list.
+
+Examples:
+* `list sessions` followed by `delete c/2` deletes the session with session ID c/2 in the address book.
 
 ### Clearing all entries : `clear`
 
